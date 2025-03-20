@@ -34,7 +34,7 @@ jobs:
           gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin gcr.io
 
       - name: Get Commit SHA
-      run: echo "COMMIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        run: echo "COMMIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Build Docker Image
         run: |
