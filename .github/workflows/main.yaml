@@ -51,4 +51,4 @@ jobs:
             --region ${REGION} \
             --platform managed \
             --allow-unauthenticated \
-            --mount-secrets=/etc/secrets/env-config=env-config:latest
+            --set-secrets=/etc/secrets/nestjs-demo-env=env-config:latest
