@@ -36,13 +36,13 @@ jobs:
       - name: Get Commit SHA
       run: echo "COMMIT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
-    - name: Build Docker Image
-      run: |
-        docker build -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA} -f DockerfileSTG .
-    
-    - name: Push Docker Image to Artifact Registry
-      run: |
-        docker push ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA}
+      - name: Build Docker Image
+        run: |
+          docker build -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA} -f DockerfileSTG .
+      
+      - name: Push Docker Image to Artifact Registry
+        run: |
+          docker push ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA}
 
       # Deploy Cloud Run, mount secret file env từ Secret Manager vào container runtime
       - name: Deploy to Cloud Run
