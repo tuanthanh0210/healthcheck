@@ -25,6 +25,12 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GCP_SA_KEY }}'
+          
+      - name: Retrieve Secrets and Save to .env
+        run: | 
+          gcloud secrets versions access latest --secret=nestjs-demo-env --format="get(payload.data)" | tr '_-' '/+' | base64 -d > envfile
+          cat envfile
+        
 
       # Cấu hình Docker để push image lên Container Registry/Artifact Registry của GCP
       - name: Configure Docker for gcloud
@@ -50,6 +56,5 @@ jobs:
             --image ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA} \
             --region ${REGION} \
             --platform managed \
-            --allow-unauthenticated \
             --set-secrets="/app/.env=nestjs-demo-env:latest"
 
