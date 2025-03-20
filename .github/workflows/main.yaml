@@ -21,11 +21,10 @@ jobs:
         uses: actions/checkout@v2
 
       # Cài đặt Google Cloud SDK và xác thực với service account key được lưu trong GitHub Secrets (GCP_SA_KEY)
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
+      - name: Auth gcp
+        uses: 'google-github-actions/auth@v2'
         with:
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          project_id: ${{ env.PROJECT_ID }}
+          credentials_json: '${{ secrets.GCP_STG_CREDENTIALS }}'
 
       # Cấu hình Docker để push image lên Container Registry/Artifact Registry của GCP
       - name: Configure Docker for gcloud
