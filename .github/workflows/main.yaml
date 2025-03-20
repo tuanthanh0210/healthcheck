@@ -24,7 +24,7 @@ jobs:
       - name: Auth gcp
         uses: 'google-github-actions/auth@v2'
         with:
-          credentials_json: '${{ secrets.GCP_STG_CREDENTIALS }}'
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
       # Cấu hình Docker để push image lên Container Registry/Artifact Registry của GCP
       - name: Configure Docker for gcloud
