@@ -7,7 +7,7 @@ on:
 
 env:
   PROJECT_ID: high-ace-306706
-  REGION: us-central1
+  REGION: us-east1-b
   SERVICE_NAME: my-nestjs-service
   ECR_REPO: nestjs-demo
 
