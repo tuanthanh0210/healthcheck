@@ -8,8 +8,10 @@ RUN yarn install
 
 COPY . .
 
+RUN echo "NODE_ENV=production" > .env
+
 RUN yarn build
 
 EXPOSE 3000 8080 80
 
-CMD ["sh", "-c", "touch .env && node dist/main.js"]
+CMD ["node", "dist/main.js"]
