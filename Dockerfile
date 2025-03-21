@@ -12,4 +12,4 @@ RUN yarn build
 
 EXPOSE 3000 8080 80
 
-CMD ["yarn", "start:prod"]
+CMD ["sh", "-c", "touch .env && node dist/main.js"]
