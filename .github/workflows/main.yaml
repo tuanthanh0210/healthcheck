@@ -57,5 +57,7 @@ jobs:
             --image ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA} \
             --region ${REGION} \
             --platform managed \
-            --allow-unauthenticated
+            --allow-unauthenticated \
+            --add-volume=name=nestjs,secret=nestjs-demo-env \
+            --mount=mount-path=/secrets/,volume=nestjs
 
