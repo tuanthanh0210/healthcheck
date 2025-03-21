@@ -12,4 +12,4 @@ RUN yarn build
 
 EXPOSE 3000 8080 80
 
-CMD ["node", "dist/main.js"]
+CMD ["node", "dist/main"]
