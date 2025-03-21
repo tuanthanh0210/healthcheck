@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-dotenv.config();
+dotenv.config({ path: '/secrets/.env' });
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
