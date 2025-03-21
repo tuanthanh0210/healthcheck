@@ -9,7 +9,7 @@ env:
   PROJECT_ID: high-ace-306706
   REGION: us-central1
   SERVICE_NAME: my-nestjs-service
-  ECR_REPO: nestjs-demo
+  ECR_REPO: nestjs-demo-2
 
 jobs:
   build-and-deploy:
