@@ -1,4 +1,4 @@
-FROM node:20-alpine as builder
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -10,13 +10,6 @@ COPY . .
 
 RUN yarn build
 
-FROM node:20-alpine as runner
-
-WORKDIR /app
-
-COPY --from=builder /app/dist .
-COPY --from=builder /app/node_modules .
-
-EXPOSE 3000 8080
+EXPOSE 3000 8080 80
 
 CMD ["node", "dist/main.js"]
