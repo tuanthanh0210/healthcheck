@@ -17,6 +17,6 @@ WORKDIR /app
 COPY --from=builder /app/dist .
 COPY --from=builder /app/node_modules .
 
-EXPOSE 3000, 8080
+EXPOSE 3000 8080
 
 CMD ["node", "dist/main.js"]
