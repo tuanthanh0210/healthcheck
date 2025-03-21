@@ -43,6 +43,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
+          cat Dockerfile
           docker build -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA} .
       
       - name: Push Docker Image to Artifact Registry
@@ -56,5 +57,6 @@ jobs:
             --image ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA} \
             --region ${REGION} \
             --platform managed \
+            --allow-unauthenticated \
             --set-secrets="/app/.env=nestjs-demo-env:latest"
 
