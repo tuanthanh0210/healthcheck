@@ -58,6 +58,5 @@ jobs:
             --region ${REGION} \
             --platform managed \
             --allow-unauthenticated \
-            --set-env-vars=PORT=8080,NODE_ENV=production \
             --set-secrets="/app/.env=nestjs-demo-env:latest"
 
