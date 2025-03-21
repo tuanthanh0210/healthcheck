@@ -59,4 +59,5 @@ jobs:
             --platform managed \
             --allow-unauthenticated \
             --set-secrets="/app/.env=nestjs-demo-env:latest"
+            --update-env-vars=FORCE_REDEPLOY=$(date +%s)
 
