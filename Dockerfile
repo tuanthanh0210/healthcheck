@@ -12,6 +12,8 @@ RUN yarn build
 
 EXPOSE 3000 8080 80
 
+RUN pwd
+
 RUN ls
 
 RUN ls dist
