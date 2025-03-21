@@ -8,8 +8,6 @@ RUN yarn install
 
 COPY . .
 
-RUN echo "NODE_ENV=production" > .env
-
 RUN yarn build
 
 EXPOSE 3000 8080 80
