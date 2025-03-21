@@ -25,12 +25,11 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.GCP_SA_KEY }}'
-          
+
       - name: Retrieve Secrets and Save to .env
-        run: | 
+        run: |
           gcloud secrets versions access latest --secret=nestjs-demo-env --format="get(payload.data)" | tr '_-' '/+' | base64 -d > envfile
           cat envfile
-        
 
       # Cấu hình Docker để push image lên Container Registry/Artifact Registry của GCP
       - name: Configure Docker for gcloud
@@ -45,7 +44,7 @@ jobs:
         run: |
           cat Dockerfile
           docker build -t ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA} . --no-cache
-      
+
       - name: Push Docker Image to Artifact Registry
         run: |
           docker push ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA}
@@ -57,5 +56,6 @@ jobs:
             --image ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA} \
             --region ${REGION} \
             --platform managed \
-            --allow-unauthenticated
-
+            --allow-unauthenticated \
+            --add-volume name=nestjs,type=secret,secret_name=nestjs-demo-env,version=latest \
+            --add-volume-mount volume=nestjs,mount-path=/secrets/.env
