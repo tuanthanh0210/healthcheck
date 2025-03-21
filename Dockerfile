@@ -8,4 +8,4 @@ RUN yarn
 
 RUN yarn build
 
-CMD ["node", "/app/dist/main.js"]
+CMD ["node", "dist/main.js"]
