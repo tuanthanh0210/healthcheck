@@ -8,8 +8,8 @@ on:
 env:
   PROJECT_ID: high-ace-306706
   REGION: us-central1
-  SERVICE_NAME: my-nestjs-service
-  ECR_REPO: nestjs-demo-2
+  SERVICE_NAME: nestjs-demo-service
+  ECR_REPO: nestjs-demo
 
 jobs:
   build-and-deploy:
@@ -58,5 +58,5 @@ jobs:
             --region ${REGION} \
             --platform managed \
             --allow-unauthenticated \
-            --set-secrets="/app=nestjs-demo-env:latest"
+            --set-secrets="/app/.env=nestjs-demo-env:latest"
 
