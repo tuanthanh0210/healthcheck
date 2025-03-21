@@ -7,6 +7,7 @@ on:
 
 env:
   PROJECT_ID: high-ace-306706
+  PROJECT_NUMBER: '137245003259'
   REGION: us-central1
   SERVICE_NAME: nestjs-demo-service
   ECR_REPO: nestjs-demo
@@ -57,5 +58,4 @@ jobs:
             --region ${REGION} \
             --platform managed \
             --allow-unauthenticated \
-            --add-volume name=nestjs,type=secret,secret_name=nestjs-demo-env,version=latest \
-            --add-volume-mount volume=nestjs,mount-path=/secrets/.env
+            --update-secrets=.env=projects/${PROJECT_NUMBER}/secrets/nestjs-demo-env:latest
