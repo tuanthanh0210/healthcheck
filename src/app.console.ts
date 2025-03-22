@@ -8,7 +8,10 @@ export class AppConsole {
     description: 'Test command',
   })
   async hello(): Promise<void> {
-    console.log('CONSOLE_ENV: ', process.env.CONSOLE_ENV);
-    console.log('Hello, world!');
+    while (true) {
+      console.log('CONSOLE_ENV: ', process.env.CONSOLE_ENV);
+      console.log('Hello, world!');
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
   }
 }
