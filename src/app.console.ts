@@ -11,7 +11,7 @@ export class AppConsole {
     while (true) {
       console.log('CONSOLE_ENV: ', process.env.CONSOLE_ENV);
       console.log('Hello, world!');
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 10000));
     }
   }
 }
