@@ -7,11 +7,13 @@ export class AppController {
 
   @Get()
   getHello(): string {
+    console.log('current time', new Date().toISOString());
     return this.appService.getHello();
   }
 
   @Get('/health')
   getHealth(): any {
+    console.log('health check', new Date().toISOString());
     return {
       status: 200,
       message: 'ok',
