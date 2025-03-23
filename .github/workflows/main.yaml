@@ -51,9 +51,9 @@ jobs:
           docker push ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA}
 
       # Deploy Cloud Run, mount secret file env từ Secret Manager vào container runtime
-      - name: Deploy to Cloud Run
-        run: |
-          gcloud run deploy ${SERVICE_NAME} \
-            --image ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA} \
-            --region ${REGION} \
-            --update-secrets=.env=projects/${PROJECT_NUMBER}/secrets/nestjs-demo-env:latest
+      # - name: Deploy to Cloud Run
+      #   run: |
+      #     gcloud run deploy ${SERVICE_NAME} \
+      #       --image ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ECR_REPO}/${SERVICE_NAME}:${COMMIT_SHA} \
+      #       --region ${REGION} \
+      #       --update-secrets=.env=projects/${PROJECT_NUMBER}/secrets/nestjs-demo-env:latest
